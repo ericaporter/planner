@@ -62,11 +62,9 @@ class DashboardController < ApplicationController
   end
 
   def all_events(workshops)
-    course = Course.next
-    meeting = Meeting.next
-    event = Event.next
+    event = Event.limit(5)
 
-    all_events = workshops << course << meeting << event
+    all_events = workshops << event
     all_events = all_events.compact.flatten
   end
 end
